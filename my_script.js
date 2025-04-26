@@ -214,17 +214,6 @@ document.getElementById("photosIcon").addEventListener("click", () => {
 
         // Add active class to photosIcon when opening
         photosIcon.classList.add('active');
-
-        const mainVideo = document.getElementById("mainVideo");
-
-if (mainVideo) {
-  mainVideo.currentTime = 0; // rewind to start
-  mainVideo.muted = true;    // make sure it's muted
-  mainVideo.play().catch(err => {
-    console.log("Video autoplay failed:", err);
-  });
-}
-
   }
 });
 
@@ -248,6 +237,7 @@ document.getElementById("closePhotosOverlay").addEventListener("click", () => {
     });
   }, 200);
 });
+
 
 
 function animateWindowToIcon(windowEl, iconEl, direction = "in", onCloseDone = null) {
@@ -982,6 +972,8 @@ function animatePhotosOverlay(show) {
   }
 }
 
+
+
 const photosIcon = document.getElementById('photosIcon');
 const dock = document.getElementById('dock');
 const closeIndicator = document.getElementById('closePhotosOverlay');
@@ -1055,6 +1047,7 @@ function updateViewer(index) {
     // Stop and reset the video
     mainVideo.pause();
     mainVideo.currentTime = 0;
+    mainVideo.muted = true;
 
   } else if (media.type === 'video') {
   mainVideo.src = media.src;
@@ -1531,17 +1524,5 @@ document.getElementById("themeToggle").addEventListener("change", (e) => {
 document.addEventListener('contextmenu', function (e) {
   if (e.target.tagName === 'IMG') {
     e.preventDefault(); // 👈 stops right-click on images
-  }
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-  const mainVideo = document.getElementById("mainVideo");
-
-  if (mainVideo) {
-    mainVideo.addEventListener('canplay', () => {
-      mainVideo.play().catch(err => {
-        console.log("Autoplay failed:", err);
-      });
-    });
   }
 });
