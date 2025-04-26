@@ -1000,7 +1000,7 @@ const mediaFiles = [
   { type: 'image', src: '1.avif' },
   { type: 'image', src: 'DSC_1497.avif' },
   { type: 'image', src: 'DSC_1500.avif' },
-  { type: 'video', src: 'video presentation.mp4' } // Example video file
+  { type: 'video', src: 'video_presentation.mp4' } // Example video file
 ];
 
 let currentIndex = 0;
