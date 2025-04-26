@@ -239,6 +239,12 @@ document.getElementById("closePhotosOverlay").addEventListener("click", () => {
 });
 
 
+mainVideo.addEventListener('canplay', () => {
+  mainVideo.play().catch(err => {
+    console.log("Autoplay failed:", err);
+  });
+});
+
 
 function animateWindowToIcon(windowEl, iconEl, direction = "in", onCloseDone = null) {
   const iconRect = iconEl.getBoundingClientRect();
