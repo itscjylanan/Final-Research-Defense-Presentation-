@@ -1029,11 +1029,9 @@ function updateViewer(index) {
   const media = mediaFiles[index];
   fileName.textContent = media.src.split('/').pop().replace(/\.[^/.]+$/, '');
 
-
   const customProgressBar = document.getElementById('customProgressBar');
   const customProgressFill = document.getElementById('customProgressFill');
 
-  // Show or hide media elements
   if (media.type === 'image') {
     mainPhoto.src = media.src;
     mainPhoto.style.display = 'block';
@@ -1050,27 +1048,36 @@ function updateViewer(index) {
     mainVideo.muted = true;
 
   } else if (media.type === 'video') {
-  mainVideo.src = media.src;
-  mainVideo.load();
-  mainVideo.loop = true;
-  mainVideo.play();
+    // 🛠 MUTE FIRST before load and play
+    mainVideo.muted = true;
+    mainVideo.src = media.src;
+    mainVideo.load();
+    mainVideo.loop = true;
 
-  mainPhoto.style.display = 'none';
-  mainVideo.style.display = 'block';
+    mainPhoto.style.display = 'none';
+    mainVideo.style.display = 'block';
 
-  customProgressBar.style.display = 'block';
-  pauseBtn.style.display = 'block';
-  muteBtn.style.display = 'block';
+    customProgressBar.style.display = 'block';
+    pauseBtn.style.display = 'block';
+    muteBtn.style.display = 'block';
 
-  // Reset progress bar
-  customProgressFill.style.width = '0%';
+    // Reset progress bar
+    customProgressFill.style.width = '0%';
 
-  // Reset controls
-  pauseIcon.style.display = 'block';
-  playIcon.style.display = 'none';
-  speakerOffIcon.style.display = 'block';
-  speakerOnIcon.style.display = 'none';
-}
+    // Reset controls
+    if (pauseIcon && playIcon && speakerOffIcon && speakerOnIcon) {
+      pauseIcon.style.display = 'block';
+      playIcon.style.display = 'none';
+      speakerOffIcon.style.display = 'block';
+      speakerOnIcon.style.display = 'none';
+    }
+
+    // 🛠 Try to play, but safely catch error if it fails
+    mainVideo.play().catch(error => {
+      console.log("Video autoplay failed:", error);
+    });
+  }
+
 
 
   // Update thumbnail highlight
