@@ -238,14 +238,6 @@ document.getElementById("closePhotosOverlay").addEventListener("click", () => {
   }, 200);
 });
 
-
-mainVideo.addEventListener('canplay', () => {
-  mainVideo.play().catch(err => {
-    console.log("Autoplay failed:", err);
-  });
-});
-
-
 function animateWindowToIcon(windowEl, iconEl, direction = "in", onCloseDone = null) {
   const iconRect = iconEl.getBoundingClientRect();
   const iconCenterX = iconRect.left + iconRect.width / 2;
@@ -1529,5 +1521,17 @@ document.getElementById("themeToggle").addEventListener("change", (e) => {
 document.addEventListener('contextmenu', function (e) {
   if (e.target.tagName === 'IMG') {
     e.preventDefault(); // 👈 stops right-click on images
+  }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  const mainVideo = document.getElementById("mainVideo");
+
+  if (mainVideo) {
+    mainVideo.addEventListener('canplay', () => {
+      mainVideo.play().catch(err => {
+        console.log("Autoplay failed:", err);
+      });
+    });
   }
 });
