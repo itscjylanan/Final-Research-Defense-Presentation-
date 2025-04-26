@@ -238,6 +238,7 @@ document.getElementById("closePhotosOverlay").addEventListener("click", () => {
   }, 200);
 });
 
+
 function animateWindowToIcon(windowEl, iconEl, direction = "in", onCloseDone = null) {
   const iconRect = iconEl.getBoundingClientRect();
   const iconCenterX = iconRect.left + iconRect.width / 2;
@@ -969,8 +970,6 @@ function animatePhotosOverlay(show) {
     });
   }
 }
-
-
 
 const photosIcon = document.getElementById('photosIcon');
 const dock = document.getElementById('dock');
