@@ -214,6 +214,17 @@ document.getElementById("photosIcon").addEventListener("click", () => {
 
         // Add active class to photosIcon when opening
         photosIcon.classList.add('active');
+
+        const mainVideo = document.getElementById("mainVideo");
+
+if (mainVideo) {
+  mainVideo.currentTime = 0; // rewind to start
+  mainVideo.muted = true;    // make sure it's muted
+  mainVideo.play().catch(err => {
+    console.log("Video autoplay failed:", err);
+  });
+}
+
   }
 });
 
