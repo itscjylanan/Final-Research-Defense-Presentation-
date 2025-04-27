@@ -1220,7 +1220,7 @@ input:checked + .slider:before {
 
 .window-body::-webkit-scrollbar-track {
   background: transparent;
-  display: non;
+  display: none;
 }
 
 .window-body::-webkit-scrollbar-thumb {
