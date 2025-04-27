@@ -1212,3 +1212,30 @@ input:checked + .slider:before {
   opacity: 1;
   transform: translateX(-50%) scale(1);
 }
+
+/* Add scrollbar styling to content-body */
+.window-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.window-body::-webkit-scrollbar-track {
+  background: transparent;
+  display: non;
+}
+
+.window-body::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.dark-mode .window-body::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Hide the scrollbar buttons (optional but clean) */
+.window-body::-webkit-scrollbar-button {
+  display: none;
+  height: 0;
+  width: 0;
+}
